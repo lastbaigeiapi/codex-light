@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Codex Light Demo</title>
+<style>
+  :root {
+    --bg-main: #17181a;
+    --bg-card: #222428;
+    --border: #31353d;
+    --accent: #f2b25c;
+    --accent-hover: #d99c4a;
+    --text: #f4f3ef;
+    --text-muted: #9e9ea0;
+    --code-bg: #111214;
+    --tag-bg: #2b2e35;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    background: var(--bg-main);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 16px;
+    padding-bottom: 90px;
+    line-height: 1.5;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .logo {
+    width: 38px;
+    height: 38px;
+    background: #111214;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+  }
+  .brand-title { font-size: 17px; font-weight: bold; }
+  .brand-sub { font-size: 12px; color: var(--text-muted); }
+  .badge {
+    background: var(--tag-bg);
+    color: var(--accent);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: auto;
+    font-weight: 500;
+  }
+  .banner {
+    background: linear-gradient(135deg, #2a251b, #222428);
+    border: 1px solid #4a3c28;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .banner h3 { font-size: 14px; color: var(--accent); margin-bottom: 4px; }
+  .banner p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+  .banner button {
+    margin-top: 10px;
+    background: var(--accent);
+    color: #17181a;
+    border: none;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .msg-container { display: flex; flex-direction: column; gap: 14px; }
+  .msg {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .msg-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .msg-bubble {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .msg.user .msg-bubble {
+    background: #23272e;
+    border-color: #3b4252;
+    align-self: flex-start;
+    width: 100%;
+  }
+  .tool-box {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: monospace;
+    font-size: 12px;
+    color: #88c0d0;
+    margin: 8px 0;
+  }
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    border-top: 1px dashed var(--border);
+    padding-top: 8px;
+  }
+  .stats-item span { color: var(--text); font-weight: bold; }
+  .dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(23, 24, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    gap: 8px;
+  }
+  .input-fake {
+    flex: 1;
+    background: #1c1d21;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+  .btn-send {
+    background: var(--accent);
+    color: #17181a;
+    border: none;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-weight: bold;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <svg width="24" height="24" viewBox="0 0 64 64">
+      <path d="M42.04 20.85A15 15 0 1 0 42.04 43.15" fill="none" stroke="#f4f3ef" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="46.5" cy="32" r="4.5" fill="#f2b25c"/>
+    </svg>
+  </div>
+  <div>
+    <div class="brand-title">Codex Light</div>
+    <div class="brand-sub">移动端预览 · 本地合成演示</div>
+  </div>
+  <div class="badge">演示模式</div>
+</div>
+
+<div class="banner">
+  <h3>当前处于离线演示模式</h3>
+  <p>在电脑端启动 Codex Light，点击「设置 → 局域网访问 → 开启并复制链接」，然后在手机端点击下方按钮一键连接电脑，即可在手机上控制真实的 Codex 与 DeepSeek 代理！</p>
+  <button onclick="connectNow()">连接电脑端 Codex Light</button>
+</div>
+
+<div class="msg-container">
+  <div class="msg user">
+    <div class="msg-head"><strong>你</strong> · 刚刚</div>
+    <div class="msg-bubble">请帮我重构用户认证模块，并支持 DeepSeek 子代理调度。</div>
+  </div>
+
+  <div class="msg bot">
+    <div class="msg-head"><strong>Codex Light (GPT-5 + DSH DeepSeek)</strong> · 刚刚</div>
+    <div class="msg-bubble">
+      已接收请求。正在规划变更并调度本地 DSH DeepSeek 子代理：
+      <div class="tool-box">
+        &gt; dsh_subagent: plan_refactor(module="auth", target="jwt")<br>
+        ✓ 检查已通过：无循环引用，已检测到已有 MCP 配置
+      </div>
+      变更已就绪并准备好测试套件。真实模式下将通过官方 Codex CLI 引擎执行，不改动您的本地配置。
+      <div class="stats-bar">
+        <div class="stats-item">模型: <span>Codex / DeepSeek</span></div>
+        <div class="stats-item">耗时: <span>1.8s</span></div>
+        <div class="stats-item">速率: <span>68 tok/s</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dock">
+  <div class="input-fake" onclick="connectNow()">输入任务或 / 指令…（连接电脑后可用）</div>
+  <button class="btn-send" onclick="connectNow()">连接</button>
+</div>
+
+<script>
+function connectNow() {
+  if (window.CodexLightNative && window.CodexLightNative.openServerManager) {
+    window.CodexLightNative.openServerManager();
+  } else {
+    alert("请返回连接管理界面输入电脑 IP 与令牌");
+  }
+}
+</script>
+</body>
+</html>

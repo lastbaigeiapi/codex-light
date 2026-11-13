@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_main">#17181a</color>
+    <color name="bg_surface">#222428</color>
+    <color name="bg_surface_alt">#2b2e35</color>
+    <color name="bg_input">#1c1d21</color>
+    <color name="border_subtle">#31353d</color>
+    <color name="border_focus">#f2b25c</color>
+    
+    <color name="accent_primary">#f2b25c</color>
+    <color name="accent_primary_pressed">#d99c4a</color>
+    <color name="text_on_primary">#17181a</color>
+    
+    <color name="text_primary">#f4f3ef</color>
+    <color name="text_secondary">#9e9ea0</color>
+    <color name="text_muted">#6b6d76</color>
+    
+    <color name="status_connected">#4caf50</color>
+    <color name="status_error">#ef5350</color>
+    <color name="status_warning">#ff9800</color>
+</resources>

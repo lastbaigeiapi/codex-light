@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Codex Light</string>
+    <string name="app_subtitle">轻量级 Codex 与 DeepSeek 移动终端</string>
+    
+    <string name="connect_title">连接电脑端 Codex Light</string>
+    <string name="connect_description">复用电脑端登录状态、会话与 MCP。支持通过局域网 (Wi-Fi) 无缝连接。</string>
+    
+    <string name="btn_paste_url">快捷粘贴局域网链接</string>
+    <string name="paste_url_hint">已复制来自电脑端「设置 → 局域网访问」的链接？点击一键填入</string>
+    
+    <string name="label_host">服务器地址 / IP</string>
+    <string name="hint_host">例如 192.168.1.100</string>
+    
+    <string name="label_port">端口 (Port)</string>
+    <string name="hint_port">例如 54321</string>
+    
+    <string name="label_token">访问令牌 (Token)</string>
+    <string name="hint_token">链接 #token= 后面的密钥</string>
+    
+    <string name="btn_connect">连接并进入</string>
+    <string name="btn_demo_mode">本地演示 / 体验模式</string>
+    
+    <string name="guide_title">如何在电脑端开启局域网连接？</string>
+    <string name="guide_step1">1. 在电脑端启动 Codex Light。</string>
+    <string name="guide_step2">2. 点击左侧「设置」→「局域网访问」，开启开关。</string>
+    <string name="guide_step3">3. 点击「复制链接」，发送或粘贴到本手机。</string>
+    
+    <string name="recent_servers">最近连接历史</string>
+    <string name="no_recent_servers">暂无历史记录</string>
+    
+    <string name="error_connection_failed">无法连接到 Codex Light 服务</string>
+    <string name="error_check_wifi">请确认手机与电脑在同一 Wi-Fi 网络，且电脑端局域网访问已保持开启。</string>
+    <string name="btn_retry">重试连接</string>
+    <string name="btn_change_server">切换服务器</string>
+    <string name="press_again_exit">再按一次退出 Codex Light</string>
+</resources>
